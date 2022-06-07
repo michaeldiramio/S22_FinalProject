@@ -21,12 +21,7 @@ public class Player {
 		return this.id;
 	} 
 
-	public void addMoney(int i) {		//increases money by i amount
+	public void addSubMoney(int i) {		//change money by i amount
 		this.money = money + i; 
 	}
-
-	public void removeMoney(int i) { //decreases money by i amount
-		this.money = money - i;
-	}
-
 }
