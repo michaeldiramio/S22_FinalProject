@@ -20,7 +20,7 @@ public class Deck {
   public void resetDeck() {
     cards.clear();
     addAllCardsToDeck();
-    System.out.println("[DECK RESET]")
+    System.out.println("[DECK RESET]\n");
   }
 
   //A method that adds all cards to an empty deck
