@@ -1,8 +1,8 @@
 public class Card {
   private int value;
   private int suit;
-  private String[] values = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-  private String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+  private String[] values = {"Ace(1)", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack(11)", "Queen(12)", "King(13)"};
+  private String[] suits = {"♥Hearts♥", "♦Diamonds♦", "♣Clubs♣", "♠Spades♠"};
 
   public Card(int value, int suit) {
     this.value = value;
