@@ -1,4 +1,5 @@
 public class Card {
+
   private int value;
   private int suit;
   private String[] values = {"Ace(1)", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack(11)", "Queen(12)", "King(13)"};
