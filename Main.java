@@ -54,6 +54,10 @@ public class Main {
     //Printing what is left of deck
     deck1.printDeck();
 
+    Game g1 = new CoinFlip();
+
+    g1.startGame();
+
 
     
     
