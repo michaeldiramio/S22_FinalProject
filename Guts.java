@@ -8,7 +8,7 @@ public class Guts extends Game {
   private int playerVal = 0;
   private boolean playerWin = false;
 
-  public void startGame(){
+  public void startGame(Player player){
 
     // everyone gets two cards
     playerHand.add(d.dealRandomCard());
@@ -46,27 +46,28 @@ public class Guts extends Game {
     // if the player hand value is higher than the dealers player wins if not dealer wins, if tied then checks who has the higher low card and makes them the winner
     if(playerVal > dealerVal){
       playerWin = true;
+      System.out.println("win");
     }else if(playerVal < dealerVal){
       playerWin = false;
+      System.out.println("lose");
     }else{
       // low card check
       playerVal = playerHand.get(0).getValue();
       dealerVal = dealerHand.get(0).getValue();
 
-      if(playerHand.get(0).getValue() > playerHand.get(1).getValue()){
+      if(playerHand.get(0).getValue() < playerHand.get(1).getValue()){
         playerVal = playerHand.get(1).getValue();
       }
-      if(dealerHand.get(0).getValue() > dealerHand.get(1).getValue()){
+      if(dealerHand.get(0).getValue() < dealerHand.get(1).getValue()){
         dealerVal = dealerHand.get(1).getValue();
       }
       if(playerVal > dealerVal){
         playerWin = true;
+        System.out.println("win");
       }else if(playerVal < dealerVal){
         playerWin = false;
+        System.out.println("lose");
       }
     }
-
-    System.out.println(playerVal + "-" + dealerVal);
-    
   }
 }
