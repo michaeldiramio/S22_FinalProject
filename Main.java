@@ -52,10 +52,9 @@ public class Main {
 
     //Start game code goes here
 
-    Game testLogan = new HiCardMini();
-    testLogan.startGame();
 
-    Game g1 = new CoinFlip();
+
+
 
 
 	}
