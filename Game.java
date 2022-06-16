@@ -1,7 +1,7 @@
 public class Game {
   
   //Starting the game
-  public void startGame(Player player) {
+  public void startGame() {
     System.out.println("huh");
 
   }

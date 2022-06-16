@@ -10,15 +10,16 @@ public class blkJack extends Game {
 	
 	public void startGame() {
 		Scanner input = new Scanner(System.in);
+		int play = 1;
 		
 		this.initializeMenu();
 		this.dealCards();
 		this.printStatus();
 		this.checkBlackjack();
-		this.hitOrStand();
-		
-		
 
+		while(play > 0) {
+			play = this.hitOrStand();
+		}
 		
 			
 	}
@@ -26,19 +27,16 @@ public class blkJack extends Game {
 	//BlackJack Methods
 
 	public void initializeMenu() {
-		
 		clear();
 		System.out.println("Welcome to the Blackjack Table");
-		
 	}
 
 	public void dealCards() {
-		
+		deck.addAllCardsToDeck();
 		for(int i = 0; i <= 1; i++) {
 			dCards.add(deck.dealRandomCard());
 			pCards.add(deck.dealRandomCard());
 		}
-		
 	}
 
 	public void printCards() {
@@ -49,7 +47,7 @@ public class blkJack extends Game {
 		System.out.println(" - Total Value of " + getPTotal());
 	}
 
-	public void hitOrStand() {
+	public int hitOrStand() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Would you like to Hit(H) or Stand(S): ");
 		String hs = input.nextLine();
@@ -58,11 +56,50 @@ public class blkJack extends Game {
 			System.out.println("The dealer gave you a card from the deck");
 			pCards.add(deck.dealRandomCard());
 			this.printCards();
+
+			if(getPTotal() > 21) {
+				System.out.println("Bust");
+				return -1;
+			}
 			
 		} else if(hs.equalsIgnoreCase("S")) {
+			return this.dealerStarts();
 
 			
-		} else {System.out.println("Incorrect Input");}
+		} else {
+			System.out.println("Incorrect Input");
+			return 1;
+		}
+		return 1;
+	}
+
+	public int dealerStarts() {
+		while(getDTotal() < 17) {
+			dCards.add(deck.dealRandomCard());
+		}
+		
+		System.out.print("Dealer Cards: ");
+		for(int i = 0; i < dCards.size(); i++) {
+			System.out.print("[" + dCards.get(i).getName() + "]");
+		}
+		System.out.println(" - Total Value of " + getDTotal());
+		
+		if(getDTotal() > 21) {
+			System.out.println("The Dealer Busted");
+			return -1;
+		} else if(getDTotal() > getPTotal()) {
+			System.out.println("The Dealer Won");
+			return -2;
+			
+		} else if(getDTotal() < getPTotal()) {
+			System.out.println("You won!!!");
+			return -1;
+			
+		}
+
+		return 0;
+
+		
 	}
 
 	public void checkBlackjack() {
@@ -90,8 +127,6 @@ public class blkJack extends Game {
 		dCards.clear();
 		pCards.clear();
 	}
-
-	
 
 	//Helpful Methods but are not Blackjack Specific
 
