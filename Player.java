@@ -1,27 +1,34 @@
 public class Player {
 	private String name;
 	private int money;
-	private int id;
+	private int pin;
 
-	public Player (String name, int money, int id) {
+	public Player (String name, int money, int pin) {
 		this.name = name;
 		this.money = money;
-		this.id = id;
+		this.pin = pin;
 	}
 
 	public String getName() { //gets name
 		return this.name;
 	} 
 
-	public int getMoney() { //gets money 
+	public int getBalance() { //gets money 
 		return this.money;
 	}
 
-	public int getID() { //gets id
-		return this.id;
+	public int getPin() { //gets id
+		return this.pin;
 	} 
 
 	public void addSubMoney(int i) {		//change money by i amount
 		this.money = money + i; 
 	}
+
+  //Converts the player to a string
+  public String toString() {
+    String s = new String(this.name + "," + this.money + "," + this.pin);
+
+    return s;
+  }
 }
