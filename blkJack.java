@@ -78,7 +78,7 @@ public class blkJack extends Game {
 			dCards.add(deck.dealRandomCard());
 		}
 		
-		System.out.print("Dealer Cards: ");
+		System.out.print("Dealer's Card: ");
 		for(int i = 0; i < dCards.size(); i++) {
 			System.out.print("[" + dCards.get(i).getName() + "]");
 		}
