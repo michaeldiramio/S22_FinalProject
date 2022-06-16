@@ -95,6 +95,9 @@ public class blkJack extends Game {
 			System.out.println("You won!!!");
 			return -1;
 			
+		} else if(getDTotal() == getPTotal()) {
+			System.out.prinln("Push");
+			return -3;
 		}
 
 		return 0;
@@ -108,13 +111,16 @@ public class blkJack extends Game {
 			if(getPTotal() == 21) {
 				System.out.println("Push");
 			}
+			
 		}
 
 		
 	}
 
 	public void printStatus() {
+		System.out.println();
 		System.out.println("Dealer has [" + dCards.get(0).getName() + "] and the second card is secreted");
+		System.out.println();
 		System.out.print("Your cards are: ");
 		for(int i = 0; i < pCards.size(); i++) {
 			System.out.print("[" + pCards.get(i).getName() + "]");
