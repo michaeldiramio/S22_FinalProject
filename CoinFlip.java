@@ -1,7 +1,7 @@
 import java.util.*;
 public class CoinFlip extends Game{
 
-  public void startGame(){
+  public void startGame(Player player){
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
     int guess = 7;

@@ -11,6 +11,7 @@ public class Main {
   public void run() {
     //Scanner
     Scanner sc = new Scanner(System.in);
+
     //Load players from file into players array
     loadFile();
 
@@ -23,6 +24,7 @@ public class Main {
         + "this is the Ultimate Card Game Center, in here you will find amazing card games and even games that you can use your money!"
         + "\n\n" + "Press Enter key to join the Ultimate Card Game Center");
 
+    
     String pressEnter = sc.nextLine();
 
     if (pressEnter.equals("")) {
