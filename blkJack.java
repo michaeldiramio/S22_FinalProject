@@ -128,8 +128,6 @@ public class blkJack extends Game {
 		pCards.clear();
 	}
 
-	
-
 	//Helpful Methods but are not Blackjack Specific
 
 	public int getPTotal() {
