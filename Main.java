@@ -52,10 +52,6 @@ public class Main {
 
     //Start game code goes here
 
-		Game Elliot = new blkJack();
-		Elliot.startGame();
-
-
 
 
 

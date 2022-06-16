@@ -67,7 +67,7 @@ public class blkJack extends Game {
 
 			
 		} else {
-			System.out.println("Incorrect Input");
+			System.out.println("Incorrect Input.");
 			return 1;
 		}
 		return 1;
