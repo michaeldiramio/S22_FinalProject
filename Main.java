@@ -9,22 +9,21 @@ public class Main {
   ArrayList<Player> players = new ArrayList<Player>();
 
   public void run() {
-    //Scanner
+    // Scanner
     Scanner sc = new Scanner(System.in);
 
-    //Load players from file into players array
+    // Load players from file into players array
     loadFile();
 
-    //Valid pin
+    // Valid pin
     boolean validPin = false;
-    //The player you will use
+    // The player you will use
     Player activePlayer = new Player("", 0, 0);
 
     System.out.println("---------WELCOME---------\n"
         + "this is the Ultimate Card Game Center, in here you will find amazing card games and even games that you can use your money!"
         + "\n\n" + "Press Enter key to join the Ultimate Card Game Center");
 
-    
     String pressEnter = sc.nextLine();
 
     if (pressEnter.equals("")) {
@@ -32,26 +31,20 @@ public class Main {
       System.out.flush();
     }
 
-
-
-
-
-
-
-    //Asking for player name
+    // Asking for player name
     System.out.println("Please enter your name: ");
     String playerName = sc.nextLine();
 
-    //Variable to see if the player name exists
+    // Variable to see if the player name exists
     boolean exists = false;
     for (int i = 0; i < players.size() && exists == false; i++) {
-      //If the player exists
+      // If the player exists
       if (playerName.equals(players.get(i).getName())) {
         exists = true;
-        //Use the player from the array
+        // Use the player from the array
         activePlayer = players.get(i);
 
-        //Get the player to enter the pin that goes with their profile
+        // Get the player to enter the pin that goes with their profile
         while (validPin == false) {
           try {
             System.out.println("Welcome back " + activePlayer.getName() + "!\nEnter your player pin to login");
@@ -60,7 +53,7 @@ public class Main {
 
             validPin = true;
 
-            //Incorrect pin
+            // Incorrect pin
             if (pin != activePlayer.getPin()) {
               validPin = false;
               System.out.println("That pin is incorrect");
@@ -73,9 +66,9 @@ public class Main {
       }
     }
 
-    //If player does not exist
+    // If player does not exist
     if (exists == false) {
-      //Get the player to make a unique pin for their profile
+      // Get the player to make a unique pin for their profile
       while (validPin == false) {
         try {
           System.out.println("Enter an ID for your player");
@@ -83,17 +76,17 @@ public class Main {
           sc.nextLine();
           validPin = true;
 
-          //Existing pin
-          for (int i = 0 ; i < players.size() && validPin == true ; i++) {
+          // Existing pin
+          for (int i = 0; i < players.size() && validPin == true; i++) {
             if (pin == players.get(i).getPin()) {
               validPin = false;
               System.out.println("That pin already exists");
             }
           }
 
-          //Pin does not exists
+          // Pin does not exists
           if (validPin == true) {
-            //Create a new player and use that pin
+            // Create a new player and use that pin
             activePlayer = new Player(playerName, 1000, pin);
             players.add(activePlayer);
           }
@@ -104,39 +97,71 @@ public class Main {
       }
     }
 
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
-    
-    /*
+    //While playing
     boolean playing = true;
     while (playing == true) {
-     * System.out.print("\033[H\033[2J"); System.out.flush();
-     * 
-     * // array of games String[] games = { "Blackjacks", "Crazy 8s", "99",
-     * "Baccarat", "3 card poker", "Guess the card", "Higher or Lower" };
-     * 
-     * System.out.println(activePlayer.getName() + ", your current balance is: " +
-     * activePlayer.getBalance() + "\n\n" + "Choose the game you want to play? " +
-     * "\n");
-     * 
-     * for (int i = 0; i < games.length; i++) { System.out.println(games[i] + " - "
-     * + i); }
-     * 
-     * int gameChoice = sc.nextInt(); System.out.println();
-     * 
-     * if (gameChoice == 1) { System.out.println("You chose, " + games[0]); } else
-     * if (gameChoice == 2) { System.out.println("You chose, " + games[1]); } else
-     * if (gameChoice == 3) { System.out.println("You chose, " + games[2]); } else
-     * if (gameChoice == 4) { System.out.println("You chose, " + games[3]); } else
-     * if (gameChoice == 5) { System.out.println("You chose, " + games[4]); } else
-     * if (gameChoice == 6) { System.out.println("You chose, " + games[5]); }
-     * 
-     
-      
-    }
-    */
+      // array of games
+      String[] games = { "Blackjack", "Baccarat", "Guts", "Guess the card", "Higher or Lower", "Roulette", "Slots" };
 
-    //Do you want to save your progress?
+      System.out.print("\033[H\033[2J");
+      System.out.flush();
+
+      System.out.println(activePlayer.getName() + "\t\t\tBalance: $" + activePlayer.getBalance() + "\n");
+
+      //Printing choices
+      for (int i = 1; i <= games.length; i++) {
+        System.out.println(games[i - 1] + " - " + i);
+      }
+
+      //Getting choice from player
+      int gameChoice = 0;
+      boolean validGame = false;
+      while (validGame == false) {
+        try {
+          gameChoice = sc.nextInt();
+          sc.nextLine();
+          
+          if (gameChoice >= 1 && gameChoice <= games.length) {
+            validGame = true;
+          } else {
+            System.out.println("Not a valid game choice");
+          }
+        } catch (Exception e) {
+          System.out.println("Game choice must be an integer");
+          sc.nextLine();
+        }
+      }
+
+      //What each selection does
+      if (gameChoice == 1) {
+        System.out.println("You chose " + games[0]);
+        Game blackJackGame = new blkJack();
+        blackJackGame.startGame(activePlayer);
+        activePlayer = blackJackGame.returnPlayer();
+      } else if (gameChoice == 2) {
+        System.out.println("You chose " + games[1]);
+      } else if (gameChoice == 3) {
+        System.out.println("You chose " + games[2]);
+      } else if (gameChoice == 4) {
+        System.out.println("You chose " + games[3]);
+      } else if (gameChoice == 5) {
+        System.out.println("You chose " + games[4]);
+      } else if (gameChoice == 6) {
+        System.out.println("You chose " + games[5]);
+      } else if (gameChoice == 7) {
+        System.out.println("You chose " + games[6]);
+        Game slotsGame = new SlotMachine();
+        slotsGame.startGame(activePlayer);
+        activePlayer = slotsGame.returnPlayer();
+      } 
+
+
+      //Stop playing (Temporary)
+      playing = false;
+    }
+    
+    
+    // Do you want to save your progress?
     String save = new String("");
     while (!save.equalsIgnoreCase("y") && !save.equalsIgnoreCase("n")) {
       System.out.println("Would you like to save your players progress?\ny/n");
@@ -150,7 +175,7 @@ public class Main {
     sc.close();
   }
 
-  //Load players from the file into an array
+  // Load players from the file into an array
   public void loadFile() {
     try {
       Scanner fileSC = new Scanner(new File("players.txt"));
@@ -165,7 +190,7 @@ public class Main {
 
   }
 
-  //Converting string from file into a player
+  // Converting string from file into a player
   public Player toPlayer(String line) {
     String[] split = line.split(",");
     Player player = new Player(split[0], Integer.parseInt(split[1]), Integer.parseInt(split[2]));
@@ -173,7 +198,7 @@ public class Main {
     return player;
   }
 
-  //Save the updated player array to the file
+  // Save the updated player array to the file
   public void saveToFile() {
     try {
       PrintStream ps = new PrintStream(new File("players.txt"));
@@ -187,7 +212,6 @@ public class Main {
     }
   }
 
-  
   public static void main(String[] args) {
     Main m = new Main();
     m.run();

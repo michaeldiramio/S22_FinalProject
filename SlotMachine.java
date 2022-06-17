@@ -1,10 +1,12 @@
-public class Game {
-  private Player p;
+public class SlotMachine extends Game {
+private Player p;
   
-  //Starting the game
   public void startGame (Player p) {
     this.p = p;
-    System.out.println("huh");
+
+    this.p.addSubMoney(9999);
+    
+    
   }
 
   public Player returnPlayer () {
