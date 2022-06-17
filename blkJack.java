@@ -100,7 +100,7 @@ public class blkJack extends Game {
 			return -1;
 			
 		} else if(getDTotal() == getPTotal()) {
-			System.out.prinln("Push");
+			System.out.println("Push");
 			return -3;
 		}
 
@@ -171,7 +171,6 @@ public class blkJack extends Game {
   }
 
 
-	//Methods that need to Change
 
 	public void printCards(char p) {
 		if(p == 'd') {
