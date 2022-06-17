@@ -96,7 +96,7 @@ public class blkJack extends Game {
 			return -1;
 			
 		} else if(getDTotal() == getPTotal()) {
-			System.out.prinln("Push");
+			System.out.println("Push");
 			return -3;
 		}
 
@@ -165,35 +165,6 @@ public class blkJack extends Game {
     System.out.print("\033[H\033[2J");
     System.out.flush();
   }
-
-
-	//Methods that need to Change
-
-	public void printCards(char p) {
-		if(p == 'd') {
-			System.out.println("Dealers Hand: ");
-			System.out.print("[" + dCards.get(0).getName() + "]");
-			System.out.println("[?]");
-			
-
-			
-		} else if(p == 'p') {
-			System.out.println("Players Hand: ");
-			int sum = 0, value = 0;
-			for(int i = 0; i < pCards.size(); i++) {
-				System.out.print("[" + pCards.get(i).getName() + "]");
-				value = dCards.get(i).getValue();
-				if(value > 10) {
-					value = 10;
-				}
-				sum = sum + value;
-			}
-			System.out.println(" Total: " + sum);
-			
-			
-		}
-	}
-
 
 
 	
