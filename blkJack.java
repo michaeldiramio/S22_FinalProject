@@ -3,12 +3,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class blkJack extends Game {
+  private Player p;
 	private ArrayList<Card> pCards = new ArrayList<Card>();
 	private ArrayList<Card> dCards = new ArrayList<Card>();
 	Deck deck = new Deck();
 
 	
-	public void startGame() {
+	public void startGame(Player p) {
+    this.p = p;
+    
 		Scanner input = new Scanner(System.in);
 		int play = 1;
 		
@@ -28,6 +31,7 @@ public class blkJack extends Game {
 
 	public void initializeMenu() {
 		clear();
+    System.out.println("Hello " + this.p.getName());
 		System.out.println("Welcome to the Blackjack Table");
 	}
 
@@ -166,6 +170,37 @@ public class blkJack extends Game {
     System.out.flush();
   }
 
+
+
+	public void printCards(char p) {
+		if(p == 'd') {
+			System.out.println("Dealers Hand: ");
+			System.out.print("[" + dCards.get(0).getName() + "]");
+			System.out.println("[?]");
+			
+
+			
+		} else if(p == 'p') {
+			System.out.println("Players Hand: ");
+			int sum = 0, value = 0;
+			for(int i = 0; i < pCards.size(); i++) {
+				System.out.print("[" + pCards.get(i).getName() + "]");
+				value = dCards.get(i).getValue();
+				if(value > 10) {
+					value = 10;
+				}
+				sum = sum + value;
+			}
+			System.out.println(" Total: " + sum);
+			
+			
+		}
+	}
+
+  //This method returns the changed player
+  public Player returnPlayer () {
+    return this.p;
+  }
 
 	
 }
