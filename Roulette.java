@@ -19,8 +19,6 @@ public class Roulette extends Game {
 
 			
 		}
-
-		activePlayer = return player; 
       
 	}
 
