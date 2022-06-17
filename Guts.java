@@ -7,14 +7,19 @@ public class Guts extends Game {
   private int dealerVal = 0;
   private int playerVal = 0;
   private boolean playerWin = false;
+  Scanner s = new Scanner(System.in);
+  int bet = 0;
 
   public void startGame(Player player){
 
+    System.out.println("How much would you like to bet?");
+    bet = s.nextInt();
+
     // everyone gets two cards
-    playerHand.add(d.dealRandomCard());
-    dealerHand.add(d.dealRandomCard());
-    playerHand.add(d.dealRandomCard());
-    dealerHand.add(d.dealRandomCard());
+    playerHand.add(this.d.dealRandomCard());
+    dealerHand.add(this.d.dealRandomCard());
+    playerHand.add(this.d.dealRandomCard());
+    dealerHand.add(this.d.dealRandomCard());
 
     // print the hands
     System.out.println("Player hand:");
@@ -68,6 +73,11 @@ public class Guts extends Game {
         playerWin = false;
         System.out.println("lose");
       }
+    }
+    if(playerWin){
+      player.addSubMoney(bet);
+    }else{
+      player.addSubMoney(-bet);
     }
   }
 }
