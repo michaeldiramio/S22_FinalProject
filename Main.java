@@ -160,8 +160,7 @@ public class Main {
       playing = false;
     }
     
-    
-    // Do you want to save your progress?
+    //Do you want to save your progress?
     String save = new String("");
     while (!save.equalsIgnoreCase("y") && !save.equalsIgnoreCase("n")) {
       System.out.println("Would you like to save your players progress?\ny/n");
