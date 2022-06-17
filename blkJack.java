@@ -3,12 +3,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class blkJack extends Game {
+  private Player p;
 	private ArrayList<Card> pCards = new ArrayList<Card>();
 	private ArrayList<Card> dCards = new ArrayList<Card>();
 	Deck deck = new Deck();
 
 	
-	public void startGame() {
+	public void startGame(Player p) {
+    this.p = p;
+    
 		Scanner input = new Scanner(System.in);
 		int play = 1;
 		
@@ -28,6 +31,7 @@ public class blkJack extends Game {
 
 	public void initializeMenu() {
 		clear();
+    System.out.println("Hello " + this.p.getName());
 		System.out.println("Welcome to the Blackjack Table");
 	}
 
@@ -194,7 +198,10 @@ public class blkJack extends Game {
 		}
 	}
 
-
+  //This method returns the changed player
+  public Player returnPlayer () {
+    return this.p;
+  }
 
 	
 }
