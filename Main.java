@@ -32,7 +32,7 @@ public class Main {
     }
 
     // Asking for player name
-    System.out.println("Please enter your name: ");
+    System.out.print("Please enter your name: ");
     String playerName = sc.nextLine();
 
     // Variable to see if the player name exists
@@ -71,7 +71,7 @@ public class Main {
       // Get the player to make a unique pin for their profile
       while (validPin == false) {
         try {
-          System.out.println("Enter an ID for your player");
+          System.out.print("Enter an ID for your player: ");
           int pin = sc.nextInt();
           sc.nextLine();
           validPin = true;
