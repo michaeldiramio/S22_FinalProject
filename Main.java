@@ -101,7 +101,17 @@ public class Main {
     boolean playing = true;
     while (playing == true) {
       // array of games
-      String[] games = { "Blackjack", "Baccarat", "Guts", "Guess the card", "Higher or Lower", "Roulette", "Slots" };
+      ArrayList<Game> games = new ArrayList<Game>();
+      Game blackJack = new blkJack();
+      games.add(blackJack);
+      Game guts = new Guts();
+      games.add(guts);
+      Game coinFlip = new CoinFlip();
+      games.add(coinFlip);
+      Game roulette = new Roulette();
+      games.add(roulette);
+      Game slotMachine = new SlotMachine();
+      games.add(slotMachine);
 
       System.out.print("\033[H\033[2J");
       System.out.flush();
@@ -109,8 +119,8 @@ public class Main {
       System.out.println(activePlayer.getName() + "\t\t\tBalance: $" + activePlayer.getBalance() + "\n");
 
       //Printing choices
-      for (int i = 1; i <= games.length; i++) {
-        System.out.println(games[i - 1] + " - " + i);
+      for (int i = 1; i <= games.toArray().length; i++) {
+        System.out.println(games.get(i - 1).gameName() + " - " + i);
       }
 
       //Getting choice from player
@@ -121,7 +131,7 @@ public class Main {
           gameChoice = sc.nextInt();
           sc.nextLine();
           
-          if (gameChoice >= 1 && gameChoice <= games.length) {
+          if (gameChoice >= 1 && gameChoice <= games.toArray().length) {
             validGame = true;
           } else {
             System.out.println("Not a valid game choice");
@@ -134,30 +144,28 @@ public class Main {
 
       //What each selection does
       if (gameChoice == 1) {
-        System.out.println("You chose " + games[0]);
-        Game blackJackGame = new blkJack();
-        blackJackGame.startGame(activePlayer);
-        activePlayer = blackJackGame.returnPlayer();
+        System.out.println("You chose " + games.get(0).gameName());
+        games.get(0).startGame(activePlayer);
       } else if (gameChoice == 2) {
-        System.out.println("You chose " + games[1]);
+        System.out.println("You chose " + games.get(1).gameName());
+        games.get(1).startGame(activePlayer);
       } else if (gameChoice == 3) {
-        System.out.println("You chose " + games[2]);
+        System.out.println("You chose " + games.get(2).gameName());
+        games.get(2).startGame(activePlayer);
       } else if (gameChoice == 4) {
-        System.out.println("You chose " + games[3]);
+        System.out.println("You chose " + games.get(3).gameName());
+        games.get(3).startGame(activePlayer);
       } else if (gameChoice == 5) {
-        System.out.println("You chose " + games[4]);
+        System.out.println("You chose " + games.get(4).gameName());
+        games.get(4).startGame(activePlayer);
       } else if (gameChoice == 6) {
-        System.out.println("You chose " + games[5]);
-      } else if (gameChoice == 7) {
-        System.out.println("You chose " + games[6]);
-        Game slotsGame = new SlotMachine();
-        slotsGame.startGame(activePlayer);
-        activePlayer = slotsGame.returnPlayer();
-      } 
+        System.out.println("You chose " + games.get(5).gameName());
+        games.get(5).startGame(activePlayer);
+      }
 
 
       //Stop playing (Temporary)
-      playing = false;
+      // playing = false;
     }
     
     //Do you want to save your progress?

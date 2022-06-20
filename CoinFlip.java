@@ -1,7 +1,8 @@
 import java.util.*;
-public class CoinFlip extends Game{
 
-  public void startGame(Player player){
+public class CoinFlip extends Game {
+
+  public void startGame(Player player) {
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
     int guess = 7;
@@ -10,25 +11,28 @@ public class CoinFlip extends Game{
 
     boolean validAnswer = false;
     // gets user input until they input heads or tails
-    while (!validAnswer){
+    while (!validAnswer) {
       String response = sc.nextLine();
       // set guess to 0 or 1 respectively
-      if(response.equalsIgnoreCase("heads")){
+      if (response.equalsIgnoreCase("heads")) {
         guess = 0;
         validAnswer = true;
-      }else if(response.equalsIgnoreCase("tails")){
+      } else if (response.equalsIgnoreCase("tails")) {
         guess = 1;
         validAnswer = true;
-      }else{
+      } else {
         System.out.println("invalid reponse");
       }
     }
     // gets random number 0 or 1 and compares to guess
-    if(guess == rand.nextInt(100)%2){
+    if (guess == rand.nextInt(100) % 2) {
       System.out.println("you guessed right");
-    }else{
+    } else {
       System.out.println("you were wrong");
     }
   }
-  
+
+  public String gameName() {
+    return "Coin Flip";
+  }
 }

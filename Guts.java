@@ -10,7 +10,7 @@ public class Guts extends Game {
   Scanner s = new Scanner(System.in);
   int bet = 0;
 
-  public void startGame(Player player){
+  public void startGame(Player player) {
 
     System.out.println("How much would you like to bet?");
     bet = s.nextInt();
@@ -33,51 +33,62 @@ public class Guts extends Game {
     playerVal = playerHand.get(0).getValue();
     dealerVal = dealerHand.get(0).getValue();
 
-    if(playerHand.get(0).getValue() < playerHand.get(1).getValue()){
+    if (playerHand.get(0).getValue() < playerHand.get(1).getValue()) {
       playerVal = playerHand.get(1).getValue();
     }
-    if(dealerHand.get(0).getValue() < dealerHand.get(1).getValue()){
+    if (dealerHand.get(0).getValue() < dealerHand.get(1).getValue()) {
       dealerVal = dealerHand.get(1).getValue();
     }
 
     // check for pairs
-    if(dealerHand.get(0).getValue() == dealerHand.get(1).getValue()){
+    if (dealerHand.get(0).getValue() == dealerHand.get(1).getValue()) {
       dealerVal = 100 + dealerHand.get(0).getValue();
     }
-    if(playerHand.get(0).getValue() == playerHand.get(1).getValue()){
+    if (playerHand.get(0).getValue() == playerHand.get(1).getValue()) {
       playerVal = 100 + playerHand.get(0).getValue();
     }
 
-    // if the player hand value is higher than the dealers player wins if not dealer wins, if tied then checks who has the higher low card and makes them the winner
-    if(playerVal > dealerVal){
+    // if the player hand value is higher than the dealers player wins if not dealer
+    // wins, if tied then checks who has the higher low card and makes them the
+    // winner
+    if (playerVal > dealerVal) {
       playerWin = true;
       System.out.println("win");
-    }else if(playerVal < dealerVal){
+    } else if (playerVal < dealerVal) {
       playerWin = false;
       System.out.println("lose");
-    }else{
+    } else {
       // low card check
       playerVal = playerHand.get(0).getValue();
       dealerVal = dealerHand.get(0).getValue();
 
-      if(playerHand.get(0).getValue() < playerHand.get(1).getValue()){
+      if (playerHand.get(0).getValue() < playerHand.get(1).getValue()) {
         playerVal = playerHand.get(1).getValue();
       }
-      if(dealerHand.get(0).getValue() < dealerHand.get(1).getValue()){
+      if (dealerHand.get(0).getValue() < dealerHand.get(1).getValue()) {
         dealerVal = dealerHand.get(1).getValue();
       }
-      if(playerVal > dealerVal){
+      if (playerVal > dealerVal) {
         playerWin = true;
         System.out.println("win");
-      }else if(playerVal < dealerVal){
+      } else if (playerVal < dealerVal) {
         playerWin = false;
         System.out.println("lose");
       }
     }
-    if(playerWin){
+    if (playerWin) {
       player.addSubMoney(bet);
-    }else{
+    } else {
       player.addSubMoney(-bet);
     }
+    // press any key to continue
+    String cont = "";
+    while (cont.equals("")) {
+      cont = s.next();
+    }
+  }
+
+  public String gameName() {
+    return "Guts";
   }
 }
