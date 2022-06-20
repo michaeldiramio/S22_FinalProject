@@ -10,7 +10,6 @@ public class blkJack extends Game {
 
   public void startGame(Player p) {
     this.p = p;
-
     Scanner input = new Scanner(System.in);
     int play = 1;
 
