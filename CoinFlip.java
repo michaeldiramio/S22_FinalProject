@@ -30,6 +30,12 @@ public class CoinFlip extends Game {
     } else {
       System.out.println("you were wrong");
     }
+    
+    System.out.println("press any key to continue");
+    String cont = "";
+    while (cont.equals("")) {
+      cont = s.next();
+    }
   }
 
   public String gameName() {
