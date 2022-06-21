@@ -10,26 +10,34 @@ public class blkJack extends Game {
 
   public void startGame(Player p) {
     this.p = p;
-    Scanner input = new Scanner(System.in);
-    int play = 1;
+		Scanner input = new Scanner(System.in);
+		int play = 1;
+		int bet = this.initializeMenu();
+		this.dealCards();
+		this.printStatus();
+		play = this.checkBlackjack();
 
-    this.initializeMenu();
-    this.dealCards();
-    this.printStatus();
-    this.checkBlackjack();
+		while(play > 0) {
+			play = this.hitOrStand();
+		}
 
-    while (play > 0) {
-      play = this.hitOrStand();
-    }
+		this.getRewards(play, bet);
+		System.out.println("Press any key to continue");
+		String i ="";
+		while(i.equalsIgnoreCase("")) {
+			i = input.nextLine();
+		}
+	}
 
-  }
+	//BlackJack Methods
 
-  // BlackJack Methods
-
-  public void initializeMenu() {
-    clear();
+	public int initializeMenu() {
+		Scanner input = new Scanner(System.in);
+		clear();
     System.out.println("Hello " + this.p.getName());
     System.out.println("Welcome to the Blackjack Table");
+    System.out.print("Enter your bet: ");
+    return input.nextInt();
   }
 
   public void dealCards() {
