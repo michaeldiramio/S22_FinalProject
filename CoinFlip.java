@@ -34,7 +34,7 @@ public class CoinFlip extends Game {
     System.out.println("press any key to continue");
     String cont = "";
     while (cont.equals("")) {
-      cont = s.next();
+      cont = sc.next();
     }
   }
 
