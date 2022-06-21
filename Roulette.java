@@ -46,7 +46,7 @@ public class Roulette extends Game {
 
 			String Input = "";
 			System.out.println("Would you like to exit? Y/N");
-			while(!Input.equalsIgnoreCase("N")) { //play again loop to exit or keep playing.
+			while(!Input.equalsIgnoreCase("N") && keepPlay == true) { //play again loop to exit or keep playing.
 				Input = input.nextLine();
 				if(Input.equalsIgnoreCase("Y"))  {
 				keepPlay = false;
@@ -55,7 +55,6 @@ public class Roulette extends Game {
 			
 
 		}
-
   }
 
 	public int spin(int numGuess, String guess) { //takes a random number, sees if your colour bet or number bet was successfull
