@@ -199,7 +199,7 @@ public class blkJack extends Game {
   }
 
 	  public String gameName() {
-    return "Black Jack";
+    return "Blackjack";
   }
 
 	
