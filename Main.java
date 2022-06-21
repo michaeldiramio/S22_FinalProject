@@ -20,6 +20,7 @@ public class Main {
     // The player you will use
     Player activePlayer = new Player("", 0, 0);
 
+
     System.out.println("---------WELCOME---------\n"
         + "This is the Ultimate Card Game Center, in here you will find amazing card games!"
         + "\n\n" + "Press Enter key to join the game center");
@@ -215,3 +216,4 @@ public class Main {
     m.run();
   }
 }
+
