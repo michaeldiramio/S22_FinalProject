@@ -21,8 +21,8 @@ public class Main {
     Player activePlayer = new Player("", 0, 0);
 
     System.out.println("---------WELCOME---------\n"
-        + "this is the Ultimate Card Game Center, in here you will find amazing card games and even games that you can use your money!"
-        + "\n\n" + "Press Enter key to join the Ultimate Card Game Center");
+        + "This is the Ultimate Card Game Center, in here you will find amazing card games!"
+        + "\n\n" + "Press Enter key to join the game center");
 
     String pressEnter = sc.nextLine();
 
@@ -129,7 +129,6 @@ public class Main {
       while (validGame == false) {
         try {
           gameChoice = sc.nextInt();
-          sc.nextLine();
           
           if (gameChoice >= 1 && gameChoice <= games.toArray().length) {
             validGame = true;
@@ -174,6 +173,7 @@ public class Main {
         System.out.print("\033[H\033[2J");
         System.out.flush();
       }
+
 
       //Asking if they still want to play
       System.out.println("Would you like to play another one of our games? y/n");

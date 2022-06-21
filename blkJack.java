@@ -4,27 +4,27 @@ import java.util.Random;
 
 public class blkJack extends Game {
   private Player p;
-	private ArrayList<Card> pCards = new ArrayList<Card>();
-	private ArrayList<Card> dCards = new ArrayList<Card>();
+	private ArrayList<Card> pCards = new ArrayList<Card>(); //holds the players cards
+	private ArrayList<Card> dCards = new ArrayList<Card>(); //holds dealers cards
 	Deck deck = new Deck();
 
 	
-	public void startGame(Player p) {
+	public void startGame(Player p) { //the main game method. 
     this.p = p;
     
 		Scanner input = new Scanner(System.in);
-		int play = 1;
-		int bet = this.initializeMenu();
-		this.dealCards();
-		this.printStatus();
-		play = this.checkBlackjack();
+		int play = 1; //keeps the loop playing before ending game
+		int bet = this.initializeMenu(); //keeps bets
+		this.dealCards(); //deals the original cards
+		this.printStatus(); //prints original cards plus hides dealer second card
+		play = this.checkBlackjack(); //checks if either have 21 valued deck.
 
-		while(play > 0) {
-			play = this.hitOrStand();
+		while(play > 0) { //this loop goes until someone stands or bust. Hit or Stand, if the player stands the dealer will add until they get to above 17. 
+			play = this.hitOrStand(); //they will return a postive meaning that the loop will continue, the negative will signal that the game is done: -1 equals the player won, -2 - The Dealer Won, -3 It was a push, -4 Blackjack for the Player, the different numbers dont matter except for to make sure the right payout is given
 		}
 
-		this.getRewards(play, bet);
-		System.out.println("Press any key to continue");
+		this.getRewards(play, bet); //gives out rewards based on the play value.
+		System.out.println("Press any key to continue"); 
 		String i ="";
 		while(i.equalsIgnoreCase("")) {
 			i = input.nextLine();
@@ -33,7 +33,7 @@ public class blkJack extends Game {
 
 	//BlackJack Methods
 
-	public int initializeMenu() {
+	public int initializeMenu() { //Prints the Main Menu and Gets Bets
 		Scanner input = new Scanner(System.in);
 		clear();
     System.out.println("Hello " + this.p.getName());
@@ -44,10 +44,9 @@ public class blkJack extends Game {
 		System.out.println(bet + " has been taken out of your account.");
 		System.out.println("------------------------------------");
 		return bet;
-	  
 	}
 
-	public void dealCards() {
+	public void dealCards() { //Deals Original Cards
 		deck.addAllCardsToDeck();
 		for(int i = 0; i <= 1; i++) {
 			dCards.add(deck.dealRandomCard());
@@ -55,7 +54,7 @@ public class blkJack extends Game {
 		}
 	}
 
-	public void printCards() {
+	public void printCards() { //Prints Only Players Cards
 		System.out.print("Your cards are: ");
 		for(int i = 0; i < pCards.size(); i++) {
 			System.out.print("[" + pCards.get(i).getName() + "]");
@@ -63,7 +62,7 @@ public class blkJack extends Game {
 		System.out.println(" - Total Value of " + getPTotal());
 	}
 
-	public int hitOrStand() {
+	public int hitOrStand() { //This is where the player can add on cards until they bust or want to stand. If the player stands the dealerStarts method will be played.
 		Scanner input = new Scanner(System.in);
 		System.out.print("Would you like to Hit(H) or Stand(S): ");
 		String hs = input.nextLine();
@@ -89,7 +88,7 @@ public class blkJack extends Game {
 		return 1;
 	}
 
-	public int dealerStarts() {
+	public int dealerStarts() { //this will get the dealer to keep adding cards to their deck until they are above 17, thats when they will compare values with the player to see who won.
 		while(getDTotal() < 17) {
 			dCards.add(deck.dealRandomCard());
 		}
@@ -121,7 +120,7 @@ public class blkJack extends Game {
 		
 	}
 
-	public int checkBlackjack() {
+	public int checkBlackjack() { //checks if either player or dealer have blackjack at the start of the game.
 	  if(getPTotal() == 21 && getDTotal() != 21) {
 			System.out.println("Blackjack!");
 			return -4;
@@ -130,7 +129,7 @@ public class blkJack extends Game {
 		}
 	}
 
-	public void getRewards(int result, int bet) {
+	public void getRewards(int result, int bet) { //payout awards based on push, win, lose, etc.
 		if(result == -1) {
 			System.out.println("Here is your reward of $" + (bet*2));
 			this.p.addSubMoney(bet * 2);
@@ -145,7 +144,7 @@ public class blkJack extends Game {
 		}
 	}
 
-	public void printStatus() {
+	public void printStatus() { //prints the dealer and player cards at the start of the game.
 		System.out.println();
 		System.out.println("Dealer has [" + dCards.get(0).getName() + "] and the second card is secreted");
 		System.out.println();
@@ -157,14 +156,14 @@ public class blkJack extends Game {
 
 	}
 
-	public void clearHands() {
+	public void clearHands() { //clears the hand of both dealer and player.
 		dCards.clear();
 		pCards.clear();
 	}
 
 	//Helpful Methods but are not Blackjack Specific
 
-	public int getPTotal() {
+	public int getPTotal() { //adds up the totals of the deck for the player.
 		int sum = 0, value = 0;
 		for(int i = 0; i < pCards.size(); i++) {
 			value = pCards.get(i).getValue();
@@ -176,7 +175,7 @@ public class blkJack extends Game {
 		return sum;
 	}
 
-	public int getDTotal() {
+	public int getDTotal() { //adds the dealers deck value.
 		int sum = 0, value = 0;
 		for(int i = 0; i < dCards.size(); i++) {
 			value = dCards.get(i).getValue();
@@ -194,36 +193,13 @@ public class blkJack extends Game {
     System.out.flush();
   }
 
-
-
-	public void printCards(char p) {
-		if(p == 'd') {
-			System.out.println("Dealers Hand: ");
-			System.out.print("[" + dCards.get(0).getName() + "]");
-			System.out.println("[?]");
-			
-
-			
-		} else if(p == 'p') {
-			System.out.println("Players Hand: ");
-			int sum = 0, value = 0;
-			for(int i = 0; i < pCards.size(); i++) {
-				System.out.print("[" + pCards.get(i).getName() + "]");
-				value = dCards.get(i).getValue();
-				if(value > 10) {
-					value = 10;
-				}
-				sum = sum + value;
-			}
-			System.out.println(" Total: " + sum);
-			
-			
-		}
-	}
-
   //This method returns the changed player
   public Player returnPlayer () {
     return this.p;
+  }
+
+	  public String gameName() {
+    return "Black Jack";
   }
 
 	
