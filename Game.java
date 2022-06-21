@@ -10,4 +10,8 @@ public class Game {
   public Player returnPlayer () {
     return this.p;
   }
+
+  public String gameName(){
+    return "huh";
+  }
 }

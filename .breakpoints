@@ -1,29 +1,3 @@
 {
-  "files": {
-    ".gitignore": [
-      {
-        "id": "c79429b4-8054-474f-84c8-44685e8071eb",
-        "line": 7,
-        "version": 1,
-        "index": 49
-      }
-    ],
-
-    "Main.java": [
-      {
-        "id": "ca08da3d-b0df-4ba2-bb3f-c6b4f5424fa5",
-        "line": 37,
-        "version": 2971,
-        "index": 1232
-
-    "CoinFlip.java": [
-      {
-        "id": "4b8f7dbb-02c2-4e5b-9b10-72464dba34a6",
-        "line": 14,
-        "version": 976,
-        "index": 341
-        
-      }
-    ]
-  }
+  "files": {}
 }
