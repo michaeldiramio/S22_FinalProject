@@ -141,38 +141,10 @@ public class Main {
         }
       }
 
-      //What each selection does
-      if (gameChoice == 1) {
-        System.out.println("You chose " + games.get(0).gameName());
-        games.get(0).startGame(activePlayer);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-      } else if (gameChoice == 2) {
-        System.out.println("You chose " + games.get(1).gameName());
-        games.get(1).startGame(activePlayer);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-      } else if (gameChoice == 3) {
-        System.out.println("You chose " + games.get(2).gameName());
-        games.get(2).startGame(activePlayer);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-      } else if (gameChoice == 4) {
-        System.out.println("You chose " + games.get(3).gameName());
-        games.get(3).startGame(activePlayer);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-      } else if (gameChoice == 5) {
-        System.out.println("You chose " + games.get(4).gameName());
-        games.get(4).startGame(activePlayer);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-      } else if (gameChoice == 6) {
-        System.out.println("You chose " + games.get(5).gameName());
-        games.get(5).startGame(activePlayer);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-      }
+			System.out.println("You chose " + games.get(gameChoice-1).gameName()); //takes game choice and loads the game.
+			games.get(gameChoice-1).startGame(activePlayer);
+			System.out.print("\033[H\033[2J");
+      System.out.flush();
 
 
       //Asking if they still want to play
