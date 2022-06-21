@@ -201,8 +201,12 @@ public class SlotMachine extends Game {
       slots[i] = types[rd.nextInt(5)];
     }
   }
-  
+
   public Player returnPlayer() {
     return this.p;
+  }
+
+  public String gameName() {
+    return "Slot Machine";
   }
 }

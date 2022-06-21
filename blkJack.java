@@ -14,25 +14,37 @@ public class blkJack extends Game {
     
 		Scanner input = new Scanner(System.in);
 		int play = 1;
-		
-		this.initializeMenu();
+		int bet = this.initializeMenu();
 		this.dealCards();
 		this.printStatus();
-		this.checkBlackjack();
+		play = this.checkBlackjack();
 
 		while(play > 0) {
 			play = this.hitOrStand();
 		}
-		
-			
+
+		this.getRewards(play, bet);
+		System.out.println("Press any key to continue");
+		String i ="";
+		while(i.equalsIgnoreCase("")) {
+			i = input.nextLine();
+		}
 	}
 
 	//BlackJack Methods
 
-	public void initializeMenu() {
+	public int initializeMenu() {
+		Scanner input = new Scanner(System.in);
 		clear();
     System.out.println("Hello " + this.p.getName());
 		System.out.println("Welcome to the Blackjack Table");
+		System.out.print("What is your bet?: ");
+		int bet = input.nextInt();
+		this.p.addSubMoney(-bet);
+		System.out.println(bet + " has been taken out of your account.");
+		System.out.println("------------------------------------");
+		return bet;
+	  
 	}
 
 	public void dealCards() {
@@ -63,7 +75,7 @@ public class blkJack extends Game {
 
 			if(getPTotal() > 21) {
 				System.out.println("Bust");
-				return -1;
+				return -2;
 			}
 			
 		} else if(hs.equalsIgnoreCase("S")) {
@@ -109,16 +121,28 @@ public class blkJack extends Game {
 		
 	}
 
-	public void checkBlackjack() {
-		
-		if(getDTotal() == 21) {
-			if(getPTotal() == 21) {
-				System.out.println("Push");
-			}
-			
+	public int checkBlackjack() {
+	  if(getPTotal() == 21 && getDTotal() != 21) {
+			System.out.println("Blackjack!");
+			return -4;
+		} else {
+			return 1;
 		}
+	}
 
-		
+	public void getRewards(int result, int bet) {
+		if(result == -1) {
+			System.out.println("Here is your reward of $" + (bet*2));
+			this.p.addSubMoney(bet * 2);
+		} else if(result == -2) {
+			System.out.println("You lost $" + bet);
+		} else if(result == -3) {
+			System.out.println("You got your money back");
+			this.p.addSubMoney(bet);
+		} else if(result == -4) {
+			System.out.println("Here is your reward of $" + (bet*3));
+			this.p.addSubMoney(bet*3);
+		}
 	}
 
 	public void printStatus() {
@@ -171,7 +195,6 @@ public class blkJack extends Game {
   }
 
 
-	//Methods that need to Change
 
 	public void printCards(char p) {
 		if(p == 'd') {
