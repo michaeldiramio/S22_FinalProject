@@ -82,6 +82,7 @@ public class Guts extends Game {
       player.addSubMoney(-bet);
     }
     // press any key to continue
+    System.out.println("press any key to continue");
     String cont = "";
     while (cont.equals("")) {
       cont = s.next();
