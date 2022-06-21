@@ -146,26 +146,45 @@ public class Main {
       if (gameChoice == 1) {
         System.out.println("You chose " + games.get(0).gameName());
         games.get(0).startGame(activePlayer);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
       } else if (gameChoice == 2) {
         System.out.println("You chose " + games.get(1).gameName());
         games.get(1).startGame(activePlayer);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
       } else if (gameChoice == 3) {
         System.out.println("You chose " + games.get(2).gameName());
         games.get(2).startGame(activePlayer);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
       } else if (gameChoice == 4) {
         System.out.println("You chose " + games.get(3).gameName());
         games.get(3).startGame(activePlayer);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
       } else if (gameChoice == 5) {
         System.out.println("You chose " + games.get(4).gameName());
         games.get(4).startGame(activePlayer);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
       } else if (gameChoice == 6) {
         System.out.println("You chose " + games.get(5).gameName());
         games.get(5).startGame(activePlayer);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
       }
 
-
-      //Stop playing (Temporary)
-      // playing = false;
+      //Asking if they still want to play
+      System.out.println("Would you like to play another one of our games? y/n");
+      String wannaPlay = sc.nextLine();
+      while (!wannaPlay.equalsIgnoreCase("y") && !wannaPlay.equalsIgnoreCase("n")) {
+        System.out.println("Not a valid option");
+        wannaPlay = sc.nextLine();
+      }
+      if (wannaPlay.equalsIgnoreCase("n")) {
+        playing = false;
+      }
     }
     
     //Do you want to save your progress?
@@ -176,7 +195,7 @@ public class Main {
 
       if (save.equalsIgnoreCase("y")) {
         saveToFile();
-        save.equalsIgnoreCase("[SAVED TO FILE]");
+        System.out.println("[SAVED TO FILE]");
       }
     }
     sc.close();
