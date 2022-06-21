@@ -25,7 +25,7 @@ public class Main {
     Player player1 = new Player(playerName, 1000, 01);
 
     //array of games
-    String [] games = {"Blackjacks", "Crazy 8s", "99", "Baccarat", "3 card poker", "Guess the card", "Higher or Lower"};
+    String [] games = {"Blackjacks", "Guts", "Baccarat", "3 card poker", "Guess the card", "Higher or Lower"};
 
     System.out.println(player1.getName() + ", your current balance is: " + player1.getMoney() + "\n\n" + "Choose the game you want to play? " + "\n");
 
@@ -36,99 +36,33 @@ public class Main {
     int gameChoice = sc.nextInt();
     System.out.println();
 
-    if (gameChoice == 1){
+    //initialize games
+    //Game g1 = new blkJack();
+    //Game g2 = new Guts(player1);
+    //Game g3 = new Baccarat();
+    //Game g4 = new 3CardPoker();
+    Game g5 = new GuessCard();
+    //Game g6 = new HighOrLow();
+
+    if (gameChoice == 0){
       System.out.println("You chose, " + games[0]);
-    } else if (gameChoice == 2){
+      //g1.startGame();
+    } else if (gameChoice == 1){
       System.out.println("You chose, " + games[1]);
-    } else if (gameChoice == 3){
+      //g2.startGame();
+    } else if (gameChoice == 2){
       System.out.println("You chose, " + games[2]);
-    } else if (gameChoice == 4){
+      //g3.startGame();
+    } else if (gameChoice == 3){
       System.out.println("You chose, " + games[3]);
-    } else if (gameChoice == 5){
+      //g4.startGame();
+    } else if (gameChoice == 4){
       System.out.println("You chose, " + games[4]);
-    } else if (gameChoice == 6){
+      g5.startGame();
+    } else if (gameChoice == 5){
       System.out.println("You chose, " + games[5]);
+      //g6.startGame();
     }
-
-    //Start game code goes here
-
-    
-    
-    //Card tests
-    System.out.println("\n" + "-----Card Tests-----");
-    
-    Card card1 = new Card(1, 4);
-    System.out.println(card1.getName());
-
-    Card card2 = new Card(13, 3);
-    System.out.println(card2.getName());
-
-    Card card3 = new Card(12, 2);
-    System.out.println(card3.getName());
-
-    Card card4 = new Card(6, 1);
-    System.out.println(card4.getName());
-
-    System.out.println();
-
-    //Deck Tests
-    System.out.println("\n" + "-----Deck Tests-----");
-    Deck deck1 = new Deck();
-
-    //Getting 5 random cards
-    for (int i = 0 ; i < 5 ; i++) {
-      System.out.println(deck1.dealRandomCard().getName());
-    }
-    System.out.println("\n");
-
-    //Card tests
-    System.out.println("Card Tests");
-    //Printing 5 different cards
-    
-    Card card1 = new Card(1, 4);
-    System.out.println(card1.getName());
-
-    Card card2 = new Card(13, 3);
-    System.out.println(card2.getName());
-
-    Card card3 = new Card(12, 2);
-    System.out.println(card3.getName());
-
-    Card card4 = new Card(6, 1);
-    System.out.println(card4.getName());
-
-    System.out.println("\n");
-
-    //Deck Tests
-    System.out.println("Deck Tests");
-    Deck deck1 = new Deck();
-
-    //Getting 5 random cards
-    for (int i = 0 ; i < 5 ; i++) {
-      System.out.println(deck1.dealRandomCard().getName());
-    }
-    System.out.println("\n");
-
-    //Resetting deck
-    deck1.resetDeck();
-
-    //Getting 39 random cards
-    for (int i = 0 ; i < 39 ; i++) {
-      System.out.println(deck1.dealRandomCard().getName());
-    }
-    System.out.println("\n");
-
-    //Printing what is left of deck
-    deck1.printDeck();
-
-    Game g1 = new CoinFlip();
-
-    g1.startGame();
-
-
-    
-    
-
-
+  
 	}
 }

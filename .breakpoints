@@ -1,28 +1,25 @@
 {
   "files": {
-    ".gitignore": [
+    "GuessCard.java": [
       {
-        "id": "c79429b4-8054-474f-84c8-44685e8071eb",
-        "line": 7,
-        "version": 1,
-        "index": 49
+        "id": "b6531068-a87f-443a-b777-fc4bffd358d2",
+        "line": 8,
+        "version": 7486,
+        "index": 226
+      },
+      {
+        "id": "35ab9d22-214d-49d5-99af-cd617ef8eb65",
+        "line": 18,
+        "version": 7054,
+        "index": 472
       }
     ],
-
     "Main.java": [
       {
-        "id": "ca08da3d-b0df-4ba2-bb3f-c6b4f5424fa5",
-        "line": 37,
-        "version": 2971,
-        "index": 1232
-
-    "CoinFlip.java": [
-      {
-        "id": "4b8f7dbb-02c2-4e5b-9b10-72464dba34a6",
-        "line": 14,
-        "version": 976,
-        "index": 341
-        
+        "id": "3228811a-0f9c-4c45-aef2-3e2d39b7359f",
+        "line": 22,
+        "version": 3465,
+        "index": 695
       }
     ]
   }
