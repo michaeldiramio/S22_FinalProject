@@ -15,6 +15,8 @@ public class Guts extends Game {
     System.out.println("How much would you like to bet?");
     bet = s.nextInt();
 
+    this.d.addAllCardsToDeck();
+
     // everyone gets two cards
     playerHand.add(this.d.dealRandomCard());
     dealerHand.add(this.d.dealRandomCard());
