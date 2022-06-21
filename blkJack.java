@@ -24,8 +24,11 @@ public class blkJack extends Game {
 		}
 
 		this.getRewards(play, bet);
-		
-			
+		System.out.println("Press any key to continue");
+		String i ="";
+		while(i.equalsIgnoreCase("")) {
+			i = input.nextLine();
+		}
 	}
 
 	//BlackJack Methods
