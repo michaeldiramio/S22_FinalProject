@@ -100,7 +100,7 @@ public class blkJack extends Game {
 			return -1;
 			
 		} else if(getDTotal() == getPTotal()) {
-			System.out.prinln("Push");
+			System.out.println("Push");
 			return -3;
 		}
 

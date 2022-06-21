@@ -157,7 +157,7 @@ public class Main {
 
 
       //Stop playing (Temporary)
-      playing = false;
+      //playing = false;
     }
     
     //Do you want to save your progress?
